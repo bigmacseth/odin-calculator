@@ -1,8 +1,8 @@
 function add(num1, num2) {
-    return num1 += num2;
+    return num1 + num2;
 };
 function subtract(num1, num2) {
-    return num1 -= num2;
+    return num1 - num2;
 };
 function multiply(num1, num2) {
     return num1 * num2;
@@ -21,7 +21,17 @@ function operate(operator, num1, num2) {
             return multiply(num1, num2);
         case '/':
             return divide(num1, num2);
+        default: 
+            return null;
     };
+};
+
+function calculateResult() {
+    memory.push(Number(numbers.textContent));
+    numbers.textContent = operate(memory[1], memory[0], memory[2])
+    memory.push('=');
+    memoryCard.textContent = memory.join(' ')
+    memory = [];
 };
 
 const viewCard = document.querySelector('.view-window');
@@ -58,17 +68,14 @@ listOfNumberButtons.forEach(item => {
 listOfOperatorButtons.forEach(item => {
     let value = item.id;
     item.addEventListener('click', () => {
-        memory.push(parseInt(numbers.textContent))
+        
+        memory.push(Number(numbers.textContent))
         memory.push(item.id);
         numbers.textContent = '';
         memoryCard.textContent = memory.join(' ');
 
         if (memory[2] != undefined) {
-            memory.push(parseInt(numbers.textContent));
-            numbers.textContent = operate(memory[1], memory[0], memory[2])
-            memory.push('=');
-            memoryCard.textContent = memory.join(' ')
-            memory = [];
+            calculateResult();
         }
     });
 });
@@ -90,9 +97,5 @@ backspace.addEventListener('click', () => {
 });
 
 equals.addEventListener('click', () => {
-    memory.push(parseInt(numbers.textContent));
-    numbers.textContent = operate(memory[1], memory[0], memory[2])
-    memory.push('=');
-    memoryCard.textContent = memory.join(' ')
-    memory = [];
+    calculateResult();
 });
