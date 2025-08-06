@@ -33,16 +33,28 @@ body {
 #view-window {
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     background-color: antiquewhite;
     color: darkslategray;
     font-size: xx-large;
-    height: 100px;
+    height: 150px;
     width: 400px;
     align-items: end;
     justify-content: end;
     padding-right: 1rem;
     margin-top: 2rem;
     border-radius: 15px 15px 0px 0px;
+}
+
+#memory {
+    box-sizing: border-box;
+    display: flex;
+    background-color: antiquewhite;
+    justify-content: end;
+    align-items: end;
+    font-size: large;
+    margin: 0;
+
 }
 
 #equals {
