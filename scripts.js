@@ -31,10 +31,15 @@ function operate(operator, num1, num2) {
 const viewCard = document.querySelector('.view-window');
 const numbers = document.querySelector('#numbers');
 
-const listOfButtons = document.querySelectorAll('.num-btn');
+const listOfNumberButtons = document.querySelectorAll('.num-btn');
+const listOfFunctionButtons = document.querySelectorAll('.func-btn');
+const listOfOperatorButtons = document.querySelectorAll('.operator-btn');
 
-listOfButtons.forEach(item => {
+// iterate over the list of buttons with numbers and add an event listener to insert text into 'numbers'
+listOfNumberButtons.forEach(item => {
+    let value = item.id;
     item.addEventListener('click', (e) => {
-        
+        numbers.insertAdjacentText('beforeend', value);
     })
 })
+
